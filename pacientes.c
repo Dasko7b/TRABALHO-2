@@ -23,6 +23,8 @@ int registraPaciente(cabeca* c, char nome[200], char idade[4], char sintomas[500
     strcpy(paciente->idade, idade);
     strcpy(paciente->sintomas, sintomas);
     paciente->prioridade = 0;
+    paciente->emFila = false;
+    paciente->atendido = false;
     paciente->Prox = NULL;
 
     if (c->inicio == NULL) {

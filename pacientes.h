@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct pacientes
 {
@@ -10,6 +11,8 @@ typedef struct pacientes
     char idade[4];
     char sintomas[500];
     int prioridade;
+    bool emFila;
+    bool atendido;
     struct pacientes* Prox;
 } pacientes;
 

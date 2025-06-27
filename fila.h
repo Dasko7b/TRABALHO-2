@@ -11,7 +11,7 @@ void iniciarFila(cabeca* fila);
 bool filaEstaVazia(cabeca* fila);
 
 // Função que insere um paciente mantendo a ordem de prioridade:
-void inserirPacienteNaFila(cabeca* fila, pacientes* novoPaciente);
+int inserirPacienteNaFila(cabeca* fila, pacientes* novoPaciente);
 
 // Função que remove e retorna o paciente de maior prioridade:
 pacientes* atenderProximoPaciente(cabeca* fila);
@@ -20,6 +20,6 @@ pacientes* atenderProximoPaciente(cabeca* fila);
 void visualizarFilaDeEspera(cabeca* fila);
 
 // Função que libera memória alocada pela fila:
-void liberarFila(cabeca* fila);
+int liberarFila(cabeca* fila);
 
 #endif
