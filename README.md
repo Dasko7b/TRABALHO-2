@@ -17,17 +17,17 @@ O sistema deve gerar relatórios de paciente atendidos por prioridade, tempo mé
 
 O projeto está organizado nos seguintes arquivos principais:
 
-*`main.c`: Contém a **lógica principal** e o controle do sistema, exibindo o menu de opções, recebendo a interação do usuário e chamando as funções dos demais módulos.
-*`fila.c`: Implementação das funções relacionadas à **fila circular de espera**, como registrar chegada de pacientes, remover da fila após atendimento e listar a fila atual.
-*`fila.h`: Cabeçalho de `fila.c`, contendo as **definições das estruturas de dados** da fila e os **protótipos** das funções de fila.
-*`pacientes.c`: Implementação das funções relacionadas ao **cadastro, atualização e listagem de pacientes**, armazenados em uma **lista encadeada**.
-*`pacientes.h`: Cabeçalho de `pacientes.c`, com as **structs** dos pacientes e os protótipos das funções.
-*`relatorio.c`: Contém as funções para **gerar relatórios** do sistema, como histórico de pacientes atendidos, estatísticas e exportação de dados.
-*`relatorio.h`: Cabeçalho de `relatorio.c`, contendo as definições e protótipos das funções de relatório.
-*`triagem.c`: Implementação da lógica de **triagem de pacientes**, que define prioridades de atendimento com base nos sintomas, idade ou outros critérios.
-*`triagem.h`: Cabeçalho de `triagem.c`, com definições de níveis de prioridade, structs auxiliares e protótipos das funções de triagem.
-*`README.md`: Este arquivo, com **instruções de uso, descrição técnica e informações de autoria**.
-*`diario_de_bordo.pdf`: Documento entregue junto ao projeto, contendo **relatos semanais do desenvolvimento**, divisão de tarefas, dificuldades encontradas, soluções aplicadas e explicações de trechos de código.
+* `main.c`: Contém a **lógica principal** e o controle do sistema, exibindo o menu de opções, recebendo a interação do usuário e chamando as funções dos demais módulos.
+* `fila.c`: Implementação das funções relacionadas à **fila circular de espera**, como registrar chegada de pacientes, remover da fila após atendimento e listar a fila atual.
+* `fila.h`: Cabeçalho de `fila.c`, contendo as **definições das estruturas de dados** da fila e os **protótipos** das funções de fila.
+* `pacientes.c`: Implementação das funções relacionadas ao **cadastro, atualização e listagem de pacientes**, armazenados em uma **lista encadeada**.
+* `pacientes.h`: Cabeçalho de `pacientes.c`, com as **structs** dos pacientes e os protótipos das funções.
+* `relatorio.c`: Contém as funções para **gerar relatórios** do sistema, como histórico de pacientes atendidos, estatísticas e exportação de dados.
+* `relatorio.h`: Cabeçalho de `relatorio.c`, contendo as definições e protótipos das funções de relatório.
+* `triagem.c`: Implementação da lógica de **triagem de pacientes**, que define prioridades de atendimento com base nos sintomas, idade ou outros critérios.
+* `triagem.h`: Cabeçalho de `triagem.c`, com definições de níveis de prioridade, structs auxiliares e protótipos das funções de triagem.
+* `README.md`: Este arquivo, com **instruções de uso, descrição técnica e informações de autoria**.
+* `diario_de_bordo.pdf`: Documento entregue junto ao projeto, contendo **relatos semanais do desenvolvimento**, divisão de tarefas, dificuldades encontradas, soluções aplicadas e explicações de trechos de código.
 
 ## Como Compilar e Executar
 
