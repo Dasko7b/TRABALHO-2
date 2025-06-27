@@ -15,7 +15,7 @@ bool filaEstaVazia(cabeca* fila);
 int inserirPacienteNaFila(cabeca* fila, pacientes* novoPaciente);
 
 // Função que remove e retorna o paciente de maior prioridade:
-pacientes* atenderProximoPaciente(cabeca* fila);
+pacientes* atenderProximoPaciente(cabeca* fila, Relatorio* relatorio);
 
 // Função que exibe todos os pacientes na fila:
 void visualizarFilaDeEspera(cabeca* fila);
