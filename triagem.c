@@ -1,5 +1,5 @@
 // triagem.c
-// Autor: Pedro Henrique Moreira da Silva 
+// Autor: [Seu Nome]
 // Função: Implementa a lógica de classificação de risco do paciente segundo o Protocolo de Manchester
 
 #include <stdio.h>
@@ -69,4 +69,16 @@ int obter_tempo_por_prioridade(int prioridade) {
         case 5: return 240;
         default: return -1;
     }
+
+
+
+}
+
+void aplicar_classificacao(pacientes* p, int prioridade) {
+    if (p == NULL) return;
+
+    p->prioridade = prioridade;
+
+    Classificacao c = classificar_paciente(prioridade);
+    printf("Paciente classificado como: %s - Tempo máximo: %d min\n", c.cor, c.tempo_maximo);
 }
