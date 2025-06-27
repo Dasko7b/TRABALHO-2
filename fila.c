@@ -65,6 +65,12 @@ pacientes* atenderProximoPaciente(cabeca* fila) {
 
     fila->tamanho--;
     pacienteAtendido->Prox = NULL; // "Desconecta" o paciente da fila
+
+    // Antes de retornar, adiciona o paciente ao histórico de atendimentos.
+    if (relatorio != NULL) {
+        adicionaRelatorio(relatorio, pacienteAtendido->nome, pacienteAtendido->idade, pacienteAtendido->sintomas, pacienteAtendido->prioridade);
+    }
+    
     return pacienteAtendido;
 }
 
