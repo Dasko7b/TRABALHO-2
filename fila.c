@@ -51,7 +51,7 @@ int inserirPacienteNaFila(cabeca* fila, pacientes* novoPaciente) {
     return 0;
 }
 
-pacientes* atenderProximoPaciente(cabeca* fila) {
+pacientes* atenderProximoPaciente(cabeca* fila, Relatorio* relatorio) {
     if (filaEstaVazia(fila)) {
         return NULL;
     }
