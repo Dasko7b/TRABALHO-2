@@ -8,29 +8,29 @@
 #include "triagem.h"
 #include "relatorio.h"
 
-// Função para limpar o buffer do teclado
+//limpar buffer teclado
 void limparBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-// Função para obter entrada de string com espaço
+//obter string com espaço
 void obterString(char *buffer, int tamanho) {
     fgets(buffer, tamanho, stdin);
-    buffer[strcspn(buffer, "\n")] = 0; // Remove a nova linha
+    buffer[strcspn(buffer, "\n")] = 0;
 }
 
 int main() {
-    cabeca filaAtendimento; // Fila principal para atendimento (prioritária)
-    cabeca registroPacientes; // Lista de todos os pacientes registrados (não na fila)
-    Relatorio* historicoAtendimentos = NULL; // Histórico de atendimentos concluídos
+    cabeca filaAtendimento;
+    cabeca registroPacientes;
+    Relatorio* historicoAtendimentos = NULL;
 
     iniciarFila(&filaAtendimento);
     iniciarRegistros(&registroPacientes);
     historicoAtendimentos = iniciarRelatorio();
 
     int opcao;
-    pacientes* pacienteTemp = NULL; // Para gerenciar pacientes a serem cadastrados/atendidos
+    pacientes* pacienteTemp = NULL;
 
     do {
         printf("\n--- SIMULADOR DE ATENDIMENTO HOSPITALAR ---\n");
@@ -64,6 +64,7 @@ int main() {
                 break;
             }
             case 2: {
+            //verificacao pacientes na fila
                 if (registroPacientes.tamanho == 0) {
                     printf("Nao ha pacientes registrados para inserir na fila.\n");
                     break;
@@ -75,7 +76,7 @@ int main() {
                 pacientes* atual = registroPacientes.inicio;
                 int count = 0;
                 while(atual != NULL){
-                    if(!atual->emFila && !atual->atendido){ // Filtra por nao estar na fila e nao ter sido atendido
+                    if(!atual->emFila && !atual->atendido){
                         printf(" %d - Nome: %s, Idade: %s, Sintomas: %s\n", atual->nome, atual->idade, atual->sintomas);
                         count++;
                     }
@@ -85,13 +86,14 @@ int main() {
                     printf("Todos os pacientes registrados ja estao na fila, ja foram atendidos ou nao ha pacientes.\n");
                     break;
                 }
-                
+            
+            //busca paciente por nome
                 char nomeBusca[200];
                 printf("Digite o nome do paciente para inserir na fila: ");
                 obterString(nomeBusca, sizeof(nomeBusca));
 
                 pacientes* pacienteEncontrado = NULL;
-                atual = registroPacientes.inicio; // Reinicia a busca
+                atual = registroPacientes.inicio;
                 while (atual != NULL) {
                     if (strcmp(atual->nome, nomeBusca) == 0) {
                         pacienteEncontrado = atual;
@@ -99,31 +101,33 @@ int main() {
                     }
                     atual = atual->Prox;
                 }
-
+            
+                //verifica se o paciente ja foi atendido ou esta na fila
                 if (pacienteEncontrado != NULL) {
                     if (pacienteEncontrado->emFila) {
                         printf("Paciente '%s' ja esta na fila de atendimento.\n", nomeBusca);
                         break;
                     }
-                    if (pacienteEncontrado->atendido) { // Verifica se já foi atendido
+                    if (pacienteEncontrado->atendido) {
                         printf("Paciente '%s' ja foi atendido e nao pode ser reinserido na fila.\n", nomeBusca);
                         break;
                     }
 
-                    // Cria um NOVO paciente para a fila
+                    //adiciona os dados do paciente para a fila
                     pacientes* pacienteParaFila = (pacientes*) malloc(sizeof(pacientes));
                     if (pacienteParaFila == NULL) {
                         printf("Erro ao alocar memoria para inserir na fila.\n");
                         break;
                     }
-                    // Copia os dados do paciente encontrado para o novo nó da fila
+
                     strcpy(pacienteParaFila->nome, pacienteEncontrado->nome);
                     strcpy(pacienteParaFila->idade, pacienteEncontrado->idade);
                     strcpy(pacienteParaFila->sintomas, pacienteEncontrado->sintomas);
                     pacienteParaFila->prioridade = 0;
-                    pacienteParaFila->emFila = true; // Marca como "em fila"
-                    pacienteParaFila->atendido = false; // Garante que o nó da fila não venha como atendido
+                    pacienteParaFila->emFila = true;
+                    pacienteParaFila->atendido = false;
                     
+                    //adiciona a prioridade do paciente
                     int prioridade;
                     exibir_categorias_de_risco();
                     printf("Defina a prioridade para '%s' (1-5): ", pacienteParaFila->nome);
@@ -133,7 +137,6 @@ int main() {
                     if (prioridade >= 1 && prioridade <= 5) {
                         aplicar_classificacao(pacienteParaFila, prioridade);
                         inserirPacienteNaFila(&filaAtendimento, pacienteParaFila);
-                        // Marca o paciente ORIGINAL na lista de registros como "em fila"
                         pacienteEncontrado->emFila = true;
                         printf("Paciente '%s' inserido na fila com prioridade %d.\n", pacienteParaFila->nome, prioridade);
                     } else {
@@ -148,29 +151,29 @@ int main() {
             case 3: {
                 printf("\n--- ATENDIMENTO DE PACIENTE ---\n");
                 pacientes* pacienteAtendido = atenderProximoPaciente(&filaAtendimento);
+
+                //verifica se tem pacientes na lista
                 if (pacienteAtendido != NULL) {
                     printf("Paciente '%s' (Prioridade: %d) atendido.\n", pacienteAtendido->nome, pacienteAtendido->prioridade);
                     
-                    // Encontra o paciente original nos registros para desmarcar 'emFila' e marcar 'atendido'
                     pacientes* atualReg = registroPacientes.inicio;
                     while(atualReg != NULL){
-                        // Compara pelo nome e verifica se ele estava na fila
                         if(strcmp(atualReg->nome, pacienteAtendido->nome) == 0 && atualReg->emFila){
-                            atualReg->emFila = false;  // Desmarca como "em fila"
-                            atualReg->atendido = true; // Marca como "atendido"
+                            atualReg->emFila = false;
+                            atualReg->atendido = true;
                             break;
                         }
                         atualReg = atualReg->Prox;
                     }
 
-                    // Adicionar ao histórico de atendimentos
+                    //adiciona no histórico
                     if (historicoAtendimentos != NULL) {
                         adicionaRelatorio(historicoAtendimentos, pacienteAtendido->nome, pacienteAtendido->idade, pacienteAtendido->sintomas, pacienteAtendido->prioridade);
                         printf("Paciente '%s' adicionado ao historico de atendimentos.\n", pacienteAtendido->nome);
                     } else {
                         printf("Erro: Historico de atendimentos nao inicializado.\n");
                     }
-                    free(pacienteAtendido); // Libera a memória do paciente atendido (o nó da fila)
+                    free(pacienteAtendido);
                 } else {
                     printf("Nao ha pacientes na fila para atendimento.\n");
                 }
@@ -181,7 +184,7 @@ int main() {
                 break;
             }
             case 5: {
-                // Modificar imprimirRegistros para mostrar o status 'emFila' e 'atendido'
+                //imprimir registro de paciente
                 if (registroPacientes.inicio == NULL) {
                     printf("Lista de pacientes está vazia.\n");
                 } else {
@@ -196,7 +199,6 @@ int main() {
                         printf("  Idade: %s\n", atual->idade);
                         printf("  Sintomas: %s\n", atual->sintomas);
                         
-                        // Exibição do status
                         if (atual->atendido) {
                             printf("  Status: Atendido\n");
                         } else if (atual->emFila) {
