@@ -2,6 +2,7 @@
 #define FILA_H
 
 #include "pacientes.h" 
+#include "relatorio.h"
 #include <stdbool.h>   
 
 // Função responsável por iniciar fila vazia:
