@@ -1,3 +1,4 @@
+//RELATORIO.h FEITO POR THIAGO DE LIMA DE ASSIS CORDEIRO
 #ifndef RELATORIO_H
 #define RELATORIO_H
 
@@ -20,9 +21,9 @@ typedef struct {
     int tamanho; 
 } Relatorio;
 
-void iniciarRelatorio(Relatorio* r);
+Relatorio* iniciarRelatorio(void);
 int adicionaRelatorio(Relatorio* r, char nome[200], char idade[4], char sintomas[500], int prioridade);
-void imprimirRelatorio(Relatorio* r, int tipo); // o usuário poderá escolher o tipo do relatório
-int liberarRelatorio(Relatorio* r);
+void imprimirRelatorio(Relatorio* r);
+void liberarRelatorio(Relatorio* r);
 
 #endif
