@@ -9,8 +9,8 @@ O sistema deve gerar relatórios de paciente atendidos por prioridade, tempo mé
 ## Funcionalidades Implementadas:
 - [ ] Cadastrar paciente (nome, idade, sintomas) 
 - [ ]	Classificar paciente na triagem com prioridade (1 a 5) e inserir na fila
+- [ ]   Atender próximo paciente com maior prioridade
 - [ ]	Visualizar fila de espera atual por ordem de prioridade
-- [ ]	Cancelar atendimento
 - [ ] Gerar relatório de atendimentos com: Pacientes atendidos por prioridade,Tempo médio de espera por categoria,Total de pacientes por cor/nível de risco
 
 ## Estrutura dos Arquivos do Projeto
