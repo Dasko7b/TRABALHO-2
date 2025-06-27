@@ -8,6 +8,7 @@
 #include "triagem.h"
 #include "relatorio.h"
 
+//FEITO POR BRUNO PEDRON RUPANER
 void limparBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
