@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "fila.h"
 #include "triagem.h" // Para ter acesso a obter_cor_por_prioridade.
 
