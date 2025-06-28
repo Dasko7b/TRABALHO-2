@@ -4,6 +4,8 @@
 #include "fila.h"
 #include "triagem.h" // Para ter acesso a obter_cor_por_prioridade.
 
+//Matheus José
+//inicia o no cabeça da fila
 void iniciarFila(cabeca* fila) {
     if (fila != NULL) {
         fila->inicio = NULL;
@@ -12,10 +14,14 @@ void iniciarFila(cabeca* fila) {
     }
 }
 
+//Matheus José
+//Confere se a fila possui pacientes
 bool filaEstaVazia(cabeca* fila) {
     return (fila == NULL || fila->tamanho == 0);
 }
 
+//Matheus José
+//Insere paciente no final da fila
 int inserirPacienteNaFila(cabeca* fila, pacientes* novoPaciente) {
     if (fila == NULL || novoPaciente == NULL) {
         printf("Erro: Fila ou paciente inválido.\n");
@@ -51,6 +57,8 @@ int inserirPacienteNaFila(cabeca* fila, pacientes* novoPaciente) {
     return 0;
 }
 
+//Matheus José
+//Remove o paciente do inicio da fila e torna o proximo como o primeiro,gerando um relatório do atendimento
 pacientes* atenderProximoPaciente(cabeca* fila, Relatorio* relatorio) {
     if (filaEstaVazia(fila)) {
         return NULL;
@@ -74,6 +82,8 @@ pacientes* atenderProximoPaciente(cabeca* fila, Relatorio* relatorio) {
     return pacienteAtendido;
 }
 
+//Matheus José
+//Imprime a fila de espera
 void visualizarFilaDeEspera(cabeca* fila) {
     printf("\n--- Fila de Espera Atual (Total: %d) ---\n", fila->tamanho);
 
@@ -93,6 +103,8 @@ void visualizarFilaDeEspera(cabeca* fila) {
     printf("-----------------------------------------\n");
 }
 
+//Matheus José
+//Libera os ponteiros alocados para a fila e inicia uma nova fila vazia
 int liberarFila(cabeca* fila) {
     if (fila == NULL) return 1;
 

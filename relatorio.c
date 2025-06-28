@@ -36,6 +36,7 @@ int adicionaRelatorio(Relatorio* r, char nome[200], char idade[4], char sintomas
 
 }
 
+//Imprime os relatórios
 void imprimirRelatorio(Relatorio* r){
     if (r == NULL || r->tamanho == 0) {
         printf("Fila vazia\n");
@@ -92,6 +93,7 @@ void imprimirRelatorio(Relatorio* r){
     }
 }
 
+//Libera o ponteiro alocado para relatorio
 void liberarRelatorio(Relatorio* r) {
     if (r != NULL) {
         free(r);

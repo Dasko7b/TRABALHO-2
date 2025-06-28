@@ -1,12 +1,16 @@
 #include <string.h>
 #include "pacientes.h"
 
+//Dyego Dasko
+//inicia cabeçalho da lista de registros
 void iniciarRegistros(cabeca* c) {
     c->inicio = NULL;
     c->fim = NULL;
     c->tamanho = 0;
 }
 
+//Dyego Dasko
+//registra paciente na lista com o nome,idade e sintomas
 int registraPaciente(cabeca* c, char nome[200], char idade[4], char sintomas[500]) {
     if (c == NULL) {
         printf("Erro: Lista não foi iniciada.\n");
@@ -39,6 +43,8 @@ int registraPaciente(cabeca* c, char nome[200], char idade[4], char sintomas[500
     return 0;
 }
 
+//Dyego Dasko
+//libera os ponteiros  alocados para a lista e cria uma nova lista
 int liberarRegistros(cabeca* c) {
     if (c == NULL) {
         printf("Erro: Lista não foi iniciada.\n");
@@ -60,6 +66,8 @@ int liberarRegistros(cabeca* c) {
     return 0;
 }
 
+//Dyego Dasko
+//imprime todos os pacientes registrados na lista
 void imprimirRegistros(cabeca* c) {
     if (c == NULL || c->inicio == NULL) {
         printf("Lista de pacientes está vazia.\n");

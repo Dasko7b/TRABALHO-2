@@ -1,11 +1,12 @@
 // triagem.c
-// Autor: [Seu Nome]
+// Autor: Pedro Henrique Moreira
 // Função: Implementa a lógica de classificação de risco do paciente segundo o Protocolo de Manchester
 
 #include <stdio.h>
 #include <string.h>
 #include "triagem.h"
 
+//Classifica o paciente por prioridade conforme Protocolo de Manchester
 Classificacao classificar_paciente(int prioridade) {
     Classificacao c;
     c.prioridade = prioridade;
@@ -40,6 +41,7 @@ Classificacao classificar_paciente(int prioridade) {
     return c;
 }
 
+//mostra as categorias de risco e o tempo maximo para serem atendidas
 void exibir_categorias_de_risco(void) {
     printf("Categorias de Risco (Protocolo de Manchester):\n");
     printf("1 - Vermelho: Atendimento Imediato\n");
@@ -49,6 +51,7 @@ void exibir_categorias_de_risco(void) {
     printf("5 - Azul    : Até 240 minutos\n");
 }
 
+//mostra cor conforme o nivel de pridoridade
 const char* obter_cor_por_prioridade(int prioridade) {
     switch (prioridade) {
         case 1: return "Vermelho";
@@ -60,6 +63,7 @@ const char* obter_cor_por_prioridade(int prioridade) {
     }
 }
 
+//mostra o tempo maximo de até o atendimento conforme o protocolo
 int obter_tempo_por_prioridade(int prioridade) {
     switch (prioridade) {
         case 1: return 0;
@@ -74,6 +78,8 @@ int obter_tempo_por_prioridade(int prioridade) {
 
 }
 
+//Atribuir uma prioridade ao paciente, classificar ele de acordo com essa prioridade 
+//e informar na tela qual foi a classificação (cor e tempo máximo de atendimento).
 void aplicar_classificacao(pacientes* p, int prioridade) {
     if (p == NULL) return;
 
